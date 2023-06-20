@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow');
+.button {
+    width:80%;
+    min-height:20vh;
+    margin-bottom: 5vh;
+    font-size: 36px;
+    font-family:serif;
+    color:white;
+    text-align:center;
+    border-radius: 50px;
+    border: 10px outset black;
+    cursor: pointer;
+}
+.button:hover {color: yellow;}
+.button:active {
+    border-style: inset;
+}
+body {text-align: center;}
+#calendar {
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    font-family: 'PT Sans Narrow',sans-serif;
+    width: 100%;
+    overflow: scroll-y;
+}
+#calendar>span {border: 1px solid; min-width:60px;}
+#calendar .diff {font-size: 200%;}
+.good {background-color: green;color: white;}
+.ok {background-color: goldenrod;color: white;}
+.bad {background-color: red;color: white;}
+#buttons:empty::before {content: "Requires javascript";}
+.buttonframe#sleep>.button {background: #008; font-weight: bold;}
+.buttonframe#wake>.button {background: #F80; font-weight: bold;}
+.time {font-weight: normal;}
+.time.yesterday:not(:empty)::before {
+    content: "↜";
+}
+.buttonframe{
+    display: flex;
+    align-content: space-between;
+    
+}
+.side {
+    display:flex;
+    flex-direction:row;
+    padding-top:20px;
+    position:relative;
+}
+.side input {
+    position:absolute;
+    bottom:0px;
+    }
+.sidebtn {
+    width:60px;
+    height: 60px;
+    border: 5px white solid;
+}
+.sidebtn:hover {border-style:outset;border-color:grey;}
+.sidebtn:active {border-style:inset;border-color:grey;}
+		
+#calendar .sleep, #calendar .wake {
+    height: 21px;
+    cursor: pointer;
+}
+#calendar .sleep:empty::before,
+#calendar .wake:empty::before {content:"--:--";}
