@@ -1,9 +1,13 @@
-//This will use LocalStorage, I hope
 let half="&frac12;";
 function debug(...args) {
 	console.debug(...args);
 }
-let dividingHour = 15; //the local hour which divides one "day" from the next
+let dividingHour = localStorage.getItem("dividingHour")??15; //the local hour which divides one "day" from the next
+//FIX: Read these from local
+//Also want to add a preferences sheet
+let OKscoreRanges = {sleep: [0,0.99], //these are min/max hours for "OK"
+		   wake:[], //null means "I don't care"
+		     diff:[7,7]};
 function getTodaysNumber(div){
     div = div??dividingHour;
     let today = new Date()
@@ -57,9 +61,6 @@ function subtract(sleep,wake){
     if (diff%2) {hour+=half;}
     return hour;
 }
-let OKscoreRanges = {sleep: [0,0.99], //these are min/max hours for "OK"
-		   wake:[], //null means "I don't care"
-		     diff:[7,7]};
 function scoreTime(time,range){
     if (range.length==0) {return "";}
     if(!time) {return "";}
@@ -81,7 +82,6 @@ function readDay(day) {
     if (diff) {
 	diffV = Number((diff.endsWith(half))?(Number(diff.replace(half,""))+0.5):(diff));
 	diffscore = "ok";
-//	debug(diff,typeof(diff),diff.replace(half,""),diffV);
 	if (diffV < OKscoreRanges.diff[0]) {diffscore = "bad";}
 	if (diffV > OKscoreRanges.diff[1]) {diffscore = "good";}
     }	
@@ -114,7 +114,6 @@ function updateButton(which,yesterQ=true){
     text = text??"";
     $times[which].html(text).toggleClass("yesterday",isyester);
     return isyester;
-    //put current recorded time here, if available
 }
 function updateButtons(){
     let S = updateButton("sleep");
@@ -126,9 +125,7 @@ function updateCalendar(N){
     let datewidth = 60;
     N = N??Math.floor(width/datewidth);
     N = Math.min(7,N);
-//    debug(width,width/datewidth,N);
     let dates = getDates(N);
-//    debug(dates);
     for(let day of dates) {
 	let $day = $("<span>").attr("day",day.id).appendTo($("#calendar"));
 	let $sleep = $("<div>").addClass("sleep").html(day.sleep).appendTo($day);
@@ -157,7 +154,6 @@ function fixTime(which,dir){
     let yester = $times[which].hasClass("yesterday");
     if(yester) {now -= 1;}
     let time = localStorage.getItem(which+now);
-//    debug(which,now);
     if (!time) {return;}
     [hr,min] = time.split(":");
     hr = Number(hr);
@@ -175,19 +171,17 @@ function makeButton(title){
     let which = title.toLowerCase();
     let $root = $("<div>").addClass("buttonframe").attr("id",which).appendTo("#buttons");
     let $left = $("<div>").addClass("side").appendTo($root);
-    let $advB = $("<img>").attr("src","decrease.png").addClass("sidebtn").appendTo($left);
-    $advB.on("click",(e,w=which)=>{fixTime(w,-1);});
-//    let $manual = $("<input type='time' step=60>").appendTo($left);
+//    let $advB = $("<img>").attr("src","decrease.png").addClass("sidebtn").appendTo($left);
+//    $advB.on("click",(e,w=which)=>{fixTime(w,-1);});
     let $button = $("<div>").addClass("button").html(title).appendTo($root);
     let $time = $("<div>").addClass("time").appendTo($button);
     
     let $right = $("<div>").addClass("side").appendTo($root);
-    let $advF = $("<img>").attr("src","increase.png").addClass("sidebtn").appendTo($right);
+//    let $advF = $("<img>").attr("src","increase.png").addClass("sidebtn").appendTo($right);
+//    $advF.on("click",(e,w=which)=>{fixTime(w,1);});
     let $trash = $("<img>").attr("src","trash.png").addClass("sidebtn").appendTo($right);
-    $advF.on("click",(e,w=which)=>{fixTime(w,1);});
     $trash.on("click",(e,w=which)=>{remove(w);});
     $button.on("click",(e,w=which)=>{register(w);});
-//    $manual.on("keypress",(e)=>{if(e.which==13){console.debug($(e.target).val());}});
     return $time;
 }
 let $times={};
