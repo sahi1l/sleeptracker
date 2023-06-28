@@ -69,3 +69,13 @@ body {
 }
 #calendar .sleep:empty::before,
 #calendar .wake:empty::before {content:"--:--";}
+
+#preferences {
+    position: fixed;
+    background: grey;
+    border: 5px outset grey;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+}
