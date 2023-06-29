@@ -1,0 +1,7 @@
+* DONE There is some bug in the rating system:
+  12:14am is listed as "good" if the green border is at 12:30
+  Also listed as "good" when the red border moves from 12 to 11:30pm
+  I need some unit testing for this
+* DONE The time editor doesn't let me finish entering in the minutes: one press and it goes out
+* Fix the preferences screen so it fits on a phone
+** The sliders probably need to be smaller, or at least less wide

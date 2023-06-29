@@ -1,0 +1,26 @@
+c.slidercontainer {
+    display: flex;
+    align-items: center;
+    width: 250px;
+    margin: 30px;
+}
+.slider {width: 250px;
+         margin: 30px 10px;
+        }
+.slidercontainer>label {
+    font-weight: bold;
+}
+.noUi-connect {
+    background: gold;
+}
+.range {color: gold;}
+.slidercontainer .checkbox {display:none;}
+.slidercontainer label {z-index:12;border: 2px outset black;margin:5px;}
+.slidercontainer {display:flex;align-items:center;}
+.slidercontainer label.norateON {
+    background:gold;
+    border: 2px inset black;
+}
+.noUi-base {
+    background-color:#aaa;
+}

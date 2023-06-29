@@ -6,16 +6,30 @@
 <link rel="stylesheet" href="index.css?2">
 <title>Sleep Tracker</title>
 <script src="jquery.js"></script>
-<script src="sleep.js"></script>
+<script src="nouislider.js"></script>
+<link rel="stylesheet" href="nouislider.css">
+<link rel="stylesheet" href="slider.css">
+<script>
+  
+  </script>
+<script type="module" src="slider.js"></script>
+<script type="module" src="sleep.js"></script>
 <div id="buttons"></div>
-<div id="calendar"></div>
+<button id="prefbutton">Prefs</button>
+<div id="calendar">
+</div>
 <div id="preferences">
-  <div id="dividinghour">
+  <div id="closeprefs">❎</div>
+<!--  <div id="dividinghour">
   <h2>Dividing Hour</h2>
   <p>The local hour when a new day starts.  Choose a time after you
     wake up and before you go to sleep.</p>
-  <input type="range" from=0 to=24 step=1>
-  </div>
 
+  <input type="range" from=0 to=24 step=1>
+</div>-->
+<div style="font-weight:bold">
+  Choose which ranges are <span style="color:green">good</span>, <span style="color:gold">OK</span>, or <span style="color:red">bad</span>.
+</div>
+<div id="quality"></div>
 </div>
   

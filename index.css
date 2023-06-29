@@ -73,9 +73,54 @@ body {
 #preferences {
     position: fixed;
     background: grey;
+    color: white;
     border: 5px outset grey;
     left: 50%;
-    top: 50%;
-    width: 100px;
-    height: 100px;
+    top: 5%;
+    transform: translateX(-50%);
+    min-height: 270px;
+}
+#preferences h2 {
+    font-size: 120%;
+    margin: 0px;
+    padding: 0px;
+}
+#preferences p {
+    margin: 0px;
+    padding: 0px;
+}
+#dividinghour {
+    width: 50%;
+}
+#preferences select {
+    margin: 0px 5px;
+    width: 70px;
+    text-align:right;
+}
+#preferences option {
+    text-align: right;
+}
+/*#quality {
+    display: grid;
+
+}*/
+.gradient,.gradientflip {
+    display: inline;
+    padding: 0px 10px;
+}
+.gradient {
+    background: linear-gradient(to right,green,gold,red);
+}
+<.gradientflip{
+    background: linear-gradient(to left,green,gold,red);
+}
+.range {position: absolute;
+        top: -30px;
+        width:150px;
+       }
+#closeprefs {
+    position:absolute;
+    top:5%;
+    right:5%;
+    cursor: pointer;
 }
