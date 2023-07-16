@@ -1,3 +1,4 @@
+/* global $,localStorage */
 let half="&frac12;";
 function debug(...args) {
 	console.debug(...args);
@@ -126,6 +127,7 @@ function updateCalendar(N){
     N = N??Math.floor(width/datewidth);
     N = Math.min(7,N);
     let dates = getDates(N);
+    $("#calendarsize").html(N);
     for(let day of dates) {
 	let $day = $("<span>").attr("day",day.id).appendTo($("#calendar"));
 	let $sleep = $("<div>").addClass("sleep").html(day.sleep).appendTo($day);
@@ -170,16 +172,9 @@ function fixTime(which,dir){
 function makeButton(title){
     let which = title.toLowerCase();
     let $root = $("<div>").addClass("buttonframe").attr("id",which).appendTo("#buttons");
-    let $left = $("<div>").addClass("side").appendTo($root);
-//    let $advB = $("<img>").attr("src","decrease.png").addClass("sidebtn").appendTo($left);
-//    $advB.on("click",(e,w=which)=>{fixTime(w,-1);});
-    let $button = $("<div>").addClass("button").html(title).appendTo($root);
+    let $button = $("<button>").addClass("button").html(title).appendTo($root);
     let $time = $("<div>").addClass("time").appendTo($button);
-    
-    let $right = $("<div>").addClass("side").appendTo($root);
-//    let $advF = $("<img>").attr("src","increase.png").addClass("sidebtn").appendTo($right);
-//    $advF.on("click",(e,w=which)=>{fixTime(w,1);});
-    let $trash = $("<img>").attr("src","trash.png").addClass("sidebtn").appendTo($right);
+    let $trash = $("<img>").attr("src","trash.png").addClass("sidebtn").appendTo($root);
     $trash.on("click",(e,w=which)=>{remove(w);});
     $button.on("click",(e,w=which)=>{register(w);});
     return $time;
@@ -220,6 +215,7 @@ function editTime(target){
 function init() {
     $times.sleep = makeButton("Sleep");
     $times.wake= makeButton("Wake");
+    $("#refresh").on("click",()=>updateCalendar());
     update();
 }
 $(init);

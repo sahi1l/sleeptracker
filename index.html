@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang=en>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <link rel="icon" href="moon.png">
-<link rel="stylesheet" href="index.css?2">
+<link rel="stylesheet" href="index.css">
 <title>Sleep Tracker</title>
 <script src="jquery.js"></script>
 <script src="sleep.js"></script>
+<h1>
+  <A HREF="https://www.github.com/sahi1l/sleeptracker"><img src="moon.png" width=40 style="float:left;opacity:0.5;" title="Go to Github" alt="Go to Github"></A>
+  Sleep Tracker</h1>
 <div id="buttons"></div>
-<div id="calendar"></div>
-
+<div id="calendarcontainer">
+  <label for="calendar">Last <span id="calendarsize"></span> days</label>
+  <div id="calendar"></div>
+   <button id="refresh">Refresh ⟳</button>
+  </div>
+</div>
   

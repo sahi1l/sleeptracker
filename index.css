@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow');
 
 .button {
+    color: grey;
     width:80%;
+    max-width:450px;
     min-height:20vh;
+    min-width: 130px;
     margin-bottom: 5vh;
     font-size: 36px;
     font-family:serif;
@@ -30,19 +33,20 @@ body {
 }
 #calendar>span {border: 1px solid; min-width:60px;}
 #calendar .diff {font-size: 200%;}
-.good {background-color: green;}
-.ok {background-color: goldenrod;}
-.bad {background-color: red;}
+.good {background-color: green;color:black;}
+.ok {background-color: goldenrod;color:black;}
+.bad {background-color: red;color:black}
 #buttons:empty::before {content: "Requires javascript";}
-.buttonframe#sleep>.button {background: #008; font-weight: bold;}
-.buttonframe#wake>.button {background: #840; font-weight: bold;}
+.buttonframe#sleep>.button {background: #004; font-weight: bold;}
+.buttonframe#wake>.button {background: #400; font-weight: bold;}
 .time {font-weight: normal;}
 .time.yesterday:not(:empty)::before {
     content: "↜";
 }
 .buttonframe{
     display: flex;
-    align-content: space-between;
+    align-content: center;
+    justify-content: center;
     
 }
 .side {
@@ -69,3 +73,21 @@ body {
 }
 #calendar .sleep:empty::before,
 #calendar .wake:empty::before {content:"--:--";}
+#refresh {background-color: black;
+          color: grey;
+          font-size:80%;
+          border: 3px grey outset;
+          padding: 0px 15px;
+          margin: 5px 10px;
+          cursor: pointer;
+          border-radius: 10px;
+         }
+#refresh:hover {
+    border: #ddd;
+}
+#refresh:active {
+    color: black;
+    background-color: grey;
+}
+h1 {color: black;
+    background: linear-gradient(to right,black,#888,black);}
